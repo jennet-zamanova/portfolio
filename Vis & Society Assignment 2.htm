@@ -13,19 +13,21 @@
 		</h1>
 
 		<p>
-			<strong>Your Name</strong> — <em>Your MIT Email Address</em>
+			<strong>Jennet Zamanova</strong> — <em>zamanova@mit.edu</em>
 		</p>
 	</header>
 	<main>
 		<section>
-			<h2>Subtheme: [ENTER SUBTHEME]</h2>
+			<h2>Subtheme: Zoning and Housing Supply</h2>
 
 			<h3>Overall Analysis Questions</h3>
 			<ol>
-				<li>QUESTION_1</li>
-				<li>QUESTION_2</li>
-				<li>QUESTION_3</li>
-				<li>...</li>
+				<li>Single Zoning vs City Density - as discussed in the <a href="https://www.nytimes.com/interactive/2019/06/18/upshot/cities-across-america-question-single-family-zoning.html?action=click&module=RelatedLinks&pgtype=Article" target="_blank">NYT article</a> single-zoning restrictions limit city's actual population because city's zoned capacity needs to accomodate for basically all of the city's population.</li>
+				<!-- As a result, the city’s actual population is now uncomfortably close to what it legally has room for; residents of Los Angeles today effectively fill about 93 percent of the city’s zoned capacity, by Mr. Morrow’s calculation. -->
+				<li>People with what income live in single zoning? - as discussed in the <a href="https://apps.bostonglobe.com/2023/10/special-projects/spotlight-boston-housing/beyond-the-gilded-gate/" target="_blank">Boston Globe article</a> people make now way less money of the portion needed to afford a home, so do only rich people live in single-zoning (economic segregation)?</li>
+				<!--  A typical household in the Boston metro area now makes about one-third the income needed to afford the typical single-family home in Greater Boston. -->
+				<li>What Races live in Single Family Zoning? - again as discussed in the <a href="https://apps.bostonglobe.com/2023/10/special-projects/spotlight-boston-housing/beyond-the-gilded-gate/" target="_blank">Boston Globe article</a> Black and Latino owners are cost burdened at higher rates, so do only white and asian people live in single-zoning (racial segregation)?</li>
+				<li>Are single zoning done near public transport/work? - <a href="https://www.washingtonpost.com/dc-md-va/2023/10/20/missing-middle-housing-comic/" target="_blank">Washington Post article</a> mentions that MA is trying to add middle housing in neighborhoods near commuter rail, but how much of it is actually near or are we trying to fix problem that does not exist</li>
 			</ol>
 		</section>
 
@@ -33,80 +35,211 @@
 			<h2>Discoveries &amp; Insights</h2>
 
 			<figure>
-				<img src="./Vis &amp; Society Assignment 2_files/IMAGE_FILENAME" alt="">
+				<img src="./Vis &amp; Society Assignment 2_files/images/same_pop_1.png" alt="" height="200px">
+				<img src="./Vis &amp; Society Assignment 2_files/images/same_pop_2.png" alt="" height="200px">
+				<img src="./Vis &amp; Society Assignment 2_files/images/average_pop.png" alt="">
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+				At first, I assumed the population provided is total population in the given municipality because at first glance I found a couple of municipalities with same population. 
+				After plotting the average population per munnicipality, I found that 4 of them had 0 population. After looking at the data, we can see that we actually do not have any data, and should just exclude it.
+				(Especially, for Sommerville given it says there is no single-zoning despite <a href="https://cityobservatory.org/the-illegal-city-of-somerville/">this</a>)
+				</figcaption>
+				<img src="./Vis &amp; Society Assignment 2_files/images/no_data.png" alt="">
+			</figure>
+
+			<figure>
+				<img src="./Vis &amp; Society Assignment 2_files/images/population_in_muni1.png" alt="">
+				<figcaption>
+				However, after adding calculated field <code>IF [Pop] == 0 THEN "ABSENT" ELSE "PRESENT" END</code> to highlight the 0 population municipalities,
+				 I realized that the population in this context is population specifically in the single-zoning/not single-zoning parts of the given municipality.
+				 Therefore, <b>Belmont, Lynn, Sharon, Sudbury, Framingham, and Waltham</b> population equal to 0 in some cases would be explained
+				 if they have either 0% or 100% single-zoning (or very close to that)
 				</figcaption>
 			</figure>
 
 			<figure>
-				<img src="./Vis &amp; Society Assignment 2_files/IMAGE_FILENAME" alt="">
+				<img src="./Vis &amp; Society Assignment 2_files/images/munis_w_zero_population.png" alt="" height="600px">
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+				So I decided to plot those specific 6 municipalities and the 
+				% that is single-zoning. However, out of <b>Belmont, Lynn, Sharon, Sudbury, Framingham, and Waltham</b>, only <b>Sharon and Sudbury</b> fit the given logic.
+				while most of them have high % that is single-zoning, Lynn speciffically fits this logic the least with only 38.8% single-zoning area. 
+				Since I'm not sure whether this is just bad data or people really all live in the single-zoning area, I am going to leave this data for now 
+				but include label whether population is zero ever 
+				<br>
+				(this was done by including a field <code>IF { fixed [Muni] : MIN([Pop])} == 0 AND [% Single Family] != 0 AND [% Single Family] != 100 THEN "ABSENT" ELSE "PRESENT" END</code>)
 				</figcaption>
 			</figure>
 
 			<figure>
-				<img src="./Vis &amp; Society Assignment 2_files/IMAGE_FILENAME" alt="">
+				<img src="./Vis &amp; Society Assignment 2_files/images/single_zoning_in_muni.png" alt="">
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+				Next, I plot just single-family zoning accross municipalities to see whether there are any general trends. We can see that most of the municipalities
+				in Boston area either have very small % single-zoning (&lt; 5%) or very large (&gt; 85%) while only 23 out of the 97 municipalities are somewhere in between.
+				Therefore, for the next visualizations, I am going to assume all municipalities &lt; 5% single-zoning `BOTTOM` &lt; 85% single-zoning `MIDDLE`  rest `TOP` (probably should come up with better names) 
+					<br>
+				(done by <code>IF [% Single Family] >= 85 THEN "TOP" ELSEIF [% Single Family] <= 5 THEN "BOTTOM" ELSE "MIDDLE" END</code>)
 				</figcaption>
 			</figure>
 
 			<figure>
-				<img src="./Vis &amp; Society Assignment 2_files/IMAGE_FILENAME" alt="">
+				<img src="./Vis &amp; Society Assignment 2_files/images/percent_of_total_pop_in_muni.png" alt="">
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+				Now that we somewhat cleaned up and labeled some of the data, we start looking at the first question. This plot shows what percentage of the total population lives in the 
+				single-zoning part of the municipality. We would expect that lower % single-zoning municipalities have lower percentage of the total population and high ones have the higher
+				percentage. If the % single zoning is high but the % of population is low -- problem! In this visualizations, green and red clusters are expected/good. But yellow cluster is very unexpected,
+				with the blue cluster being pretty bad - especially <b>Swampscott, Newton, Natick, Milford, Marblehead, Milton, Reading, Randolph, Weston, Millis</b> have % single-zoning <b>&gt; 75% while housing less than 35%</b> of population, with Swampscott and Milton being the worst
+				at <b>housing less than 15% of their total population</b>. The yellow cluster, which is just <b>Beverly</b>, somehow manages to house <b>87% of population (645 people) in only 28.56% of the area!?</b>
+					<br>
+				(percent of total population was calculated by <code>100*[Pop]/[TotalPop]</code> with TotalPop being <code>{ FIXED [Muni] : SUM([Pop]) }</code>)
 				</figcaption>
 			</figure>
 
 			<figure>
-				<img src="./Vis &amp; Society Assignment 2_files/IMAGE_FILENAME" alt="">
+				<img src="./Vis &amp; Society Assignment 2_files/images/households_vs_population.png" alt="">
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+				Given the discrepency in the amount of people single-zoning houses are housing compared to the amount of space they take up,
+				I wanted to see how many households they have to house these people (is it the lack of households or lack of interest)
+				As we can see, while there is a "general trend" (if we can call it that) of having more households to house more people, BUT 
+				clearly there are lot of outliers. We have heroes like Arlington housing 86.52% of total population even though they have only 
+				18% of households (though they do have space of 67% for single zoning average population per household is only "2.6").
+				Though we also have evils like Reading that somehow has only 54% of the households in 97.87% of the area??? hosuing only
+				 25% of the population, with average population per household 0.073 (does a single person own all of Reading?)?!
+				 <br>
+				 This does explain Beverly though, because we can see most of the households are in Beverly, and average population per household is "0.49" (so there are more households available?)!
+				 <br>
+				 Now, this analysis is limited by the fact that years are different (though close to each other) and it would be interesting to see whether 
+				 there were some very distinct events for these outliers of "heroes and evils".
+				 <br>
+				 The percent of the households was calculated similarly the percent of population. Population per household was calculated by <code>[Pop]/[Hh]</code>
 				</figcaption>
 			</figure>
 
 			<figure>
-				<img src="./Vis &amp; Society Assignment 2_files/IMAGE_FILENAME" alt="">
+				<img src="./Vis &amp; Society Assignment 2_files/images/average_income_in_single_vs_not_zoning.png" alt="" width="40%">
+				<img src="./Vis &amp; Society Assignment 2_files/images/average_income_in_zoning.png" alt="" width="40%">
+
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+				Now, we start looking at the income brackets that live in single-zoning vs not single-zoning areas. To do this,
+				I calculated average income per household by <code>([Incu10]*10000 + [Inc1015]*14999 + [Inc1520]*19999 + 
+					[Inc2025]*24999 + [Inc2530]*29999 + [Inc3035]*34999 + [Inc3540]*39999 + [Inc4045]*44999 + [Inc4550]*49999 + 
+					[Inc5060]*59999 + [Inc6075]*74999 + [I7599]*99999 + [I100125]*124999+ [I125150]*149999 + [I150200]*199999 + 
+					[In200O]*500000) / [Hh]</code>. This is very limited since I calculated <code>In200O</code> as on average 500000
+					even though realistically those people could be very wealthy billionaires. Having a more specific number would have been more helpful.
+					500000 was selected somewhat randomly with assumption that for example SE earn around half a million in the higher up positions. For the rest of the 
+					brackets their upper limits were selected.
+					<br>
+					For the above plots, I wanted to see whether people in single-zoning are generally richer. 0 means not in single-zoning while 1 is in single-zoning. 
+					BOTTOM, MIDDLE, TOP is same as mentioned previously.
+					<br>
+					We can see that generally speaking, while the ranges are quite big, people that live in single-zoning richer that those who do not. Even in the BOTTOM group,
+					despite having smaller median, the minimum average is way higher than that of not single-zoning. The discrepency in income is even more stark in the MIDDLE section,
+					and I think more important since there is enough people to have representative average. Without Wellesley, Beverly (again), Winchester, and Medford (the municipalities that are on
+					the high end of the range) in the Middle section the medians become 116K vs 202K -> almost twice teh difference!
+					<br>
+					I removed values that have population 0 because income would also be 0.
 				</figcaption>
 			</figure>
 
 			<figure>
-				<img src="./Vis &amp; Society Assignment 2_files/IMAGE_FILENAME" alt="">
+				<img src="./Vis &amp; Society Assignment 2_files/images/difference_in_average_income.png" alt="">
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+				Since the view above was very aggregated and made it difficult to see what's the difference in income within municipalities in single-zoning vs not, 
+				I calculated the difference <code>Single-zoning Average Income - Not Single Zoning Average Income</code>. I also removed the values where % Single Family equals to 0 or 100
+				because that means the other value is 0 anyway, and those that have population 0 since income would also be 0. We can see in BOTTOM section that the variance is not as big, though Revere does have wealthier people living in single-zoning. 
+				<br>
+				In MIDDLE section, we see that generally speaking even within municipalities people in single-zoning are way richer. However, we see Beverly again being an outlier!
+				If we look closer at the data, we can see that for some reason there are more households in single-zoning AND the wealthy few live in none-single-zoning area. 
+				While this could be explained by them having huge mansions in non-single-zoning area, I think it is more likely that the "Only Single Family" was switched. If we switch the label ourselves, we get the visualization below.
+				<img src="./Vis &amp; Society Assignment 2_files/images/difference_in_average_income_beverly.png" alt="">
+				Now everyone that lives in the single-zoning area is wealthier in the MIDDLE section, and almost everyone in the TOP section. The only big exceptions being Reading (even though most of it - 97% -
+				is single-zoning) and Marblehead (both have comparable number of households in zoning and non-zoning and twice as many people with income above 200K live in non-single-zoning area!)
+				And Natick has quite a problem with a huge gap (250K) in income, while having 3 times as many households in the non-single-zoning area.
+				<br>
+				<code>{FIXED [Muni]: SUM([NegatedIncomeForNotSingle])}</code> with <code>IF [Only Single Family] == 0 THEN -[AverageIncome] ELSE [AverageIncome] END</code>
 				</figcaption>
 			</figure>
 
 			<figure>
-				<img src="./Vis &amp; Society Assignment 2_files/IMAGE_FILENAME" alt="">
+				<img src="./Vis &amp; Society Assignment 2_files/images/difference_in_average_income_map_beverly.png" alt="">
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+				Once we map these values, we can also see that coastal municipalities while tend to have wealthier people in the single-zoning areas,
+				do not have as much of an inequality as more mainland municipalities (would except the opposite)!
 				</figcaption>
 			</figure>
 
 			<figure>
-				<img src="./Vis &amp; Society Assignment 2_files/IMAGE_FILENAME" alt="">
+				<img src="./Vis &amp; Society Assignment 2_files/images/not_white_outlier.png" alt="" height="800px">
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+				Next, we are going to look at whether there is a dominance of white people in single-zoning areas. This aggregated view shows the difference in % of not white people in single-zoning vs not, 
+				I calculated the difference <code>[Difference in Asian]+[Difference in Black]+[Difference in Latino]+[Difference in MLT]</code>, where each difference is <code>Single-zoning % of Population in that Area that is Race X - Not Single Zoning % of Population in that Area that is Race X</code>
+				We can see that the least diverse compared to its non-songle-zoning area municipalities are the ones that had 5% &lt; single-zoning area &lt; 85%. 
+				I also included the % of the population of the municipality that is in the single-zoning area, and excluded the ones that had &lt; 5% or &gt; 95% 
+				of the population just because it is not enough to make any conclusions. We can see that there are some clear outliers: <b>Revere, Wellesley, and Newton</b> and surprisingly <b>Wichester</b> actually has 
+				more diverse population in their single-zoning area (even though they house only 61% of the poopulation in that area). 
+				It's also worth noting that Natick, Weston, Wellesley, Brookline, and Newton are all located very close to each other (and we mentioed previously the huge gap in income in Natick).
+				And generally speaking, the segregation is more visible in the south part of Boston area with some blobs being diverse than others
+				<img src="./Vis &amp; Society Assignment 2_files/images/race_map.png" alt="" height="700px">
 				</figcaption>
 			</figure>
 
 			<figure>
-				<img src="./Vis &amp; Society Assignment 2_files/IMAGE_FILENAME" alt="">
+				<img src="./Vis &amp; Society Assignment 2_files/images/black_outlier.png" alt=""  height="700px">
 				<figcaption>
-				ENTER IMAGE CAPTION HERE.
+				Figure 10 was further separated based on race. We can see that for black people the variance in % difference is not as big and there are areas with more black people as well as less regardless of the zoning restrictions. 
 				</figcaption>
 			</figure>
+
+			<figure>
+				<img src="./Vis &amp; Society Assignment 2_files/images/latino_outlier.png" alt="" height="700px">
+				<figcaption>
+				For latinos, we can see a much bigger gap, especially when it comes to Revere having an over 25% gap despite housing 63% of the population! This suggest that lations are affected a lot more by the zoning restrictions.
+				</figcaption>
+			</figure>
+			
+			<figure>
+				<img src="./Vis &amp; Society Assignment 2_files/images/asian_outlier.png" alt="" height="700px">
+				<figcaption>
+				For asians, we continue seeing big gaps in the MIDDLE and TOP sections, with <b>Wellesley, Brookline, Newton, Ashland, Natick, and Weston</b> having over 10% gap between their single and not-single-zoning areas!
+				However, we can also see that Winchester, Reading, and Lincoln have more asians in the single-zoning area.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="./Vis &amp; Society Assignment 2_files/images/mlt_outlier.png" alt="" height="700px">
+				<figcaption>
+				For people with multiple races, we can see that in MIDDLE single-zoning most of the people are in not single-zoning areas with <b>Reading and Melrose</b> driving the values down significantly 
+				</figcaption>
+			</figure>
+			
+			<figure>
+				<img src="./Vis &amp; Society Assignment 2_files/images/zoning_transportation.png" alt="">
+				<figcaption>
+				When it comes to the transportation it is harder to make conclusions based on available data because the commute lines could be passing through the non-single-zone parts of the municipalities.
+				However, for the southwest direction we can see that the lines are going though through mostly if not completely single-zoning area. 
+				</figcaption>
+			</figure>
+			<figure>
+				<img src="./Vis &amp; Society Assignment 2_files/images/commuter_rail.png" alt="">
+				<figcaption>
+					Moreover commuter rail stations specifically do seem to be located predominantly in the single-zoning heavy municipalities (of course ignore boston itself).
+					We see that further away from Boston in general we get less transportation, so there is also the question of whether these municipalities have other options 
+					for transportation (to e.g. transfer to a location that has MBTA). Since this only includes MBTA data we don't really know. 
+					(if not, I mean US public transportation is pretty bad to begin with)
+				</figcaption>
+			</figure>
+			
 		</section>
 
 		<section>
 			<h2>Summary</h2>
 
-			<p>WRITE FINAL SUMMARY HERE.</p>
+			<p>In this EDA, we explore zoning and demographic data for the municipalities in the Boston area. We first check the data quality by analysing population data that leads us to 1) exclude Burlington, Chelsea, Sommerville, and Everett completely
+				and 2) label and later exclude Belmont, Lynn, Sharon, Sudbury, Framingham, and Waltham due to 0 population. We later divided our municipalities into subcategories BOTTOM, MIDDLE, TOP based on % of area that is single-zoning only.
+				We performed analysis on the density of the zoned areas that led us to find another anomaly - Beverly - that we later modified the label for. We found that for some municipalities the single-zoning areas take up more space than they provide housing for 
+				while for others it was reversed. We also found that wealthier people live in the single-zoning area of the municipalities with income gap varying from 0 to 2x! During this process, we also found some municipalities (Peabody, Marblehead, and Reading)
+				that actually had wealthier people living in the not-single-zoning areas! Next we dive deeper into the racial data to find out that latinos and asians showcase bigger gap in living in single-vs-not-zoning though not in all municipailities - with Revere, Wellesley, and Newton 
+				being the least diverse in single-zoning areas. Finally, we looked at some transportation data to see whether there is a need to decrease zoning restrictions near the public transport stops. However, due to the lack of detail in the available data 
+				it is hard to make any conclusions (still should have more public transport available in general not just specific zones).
+			</p>
 		</section>
 	</main>
 

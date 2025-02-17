@@ -101,6 +101,7 @@ figure {
 	box-shadow: 0 .1em .2em var(--color-neutral-95);
 	text-align: center;
 	background: white;
+	max-width: 100%;
 
 	> figcaption {
 		font: 500 75% var(--font-sans);
@@ -123,4 +124,9 @@ figure {
 			text-decoration-color: color-mix(in lab, currentColor, transparent 70%);
 		}
 	}
+}
+
+figure img {
+	max-width: 100%;
+	margin: 2em;
 }
