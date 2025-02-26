@@ -130,3 +130,9 @@ figure img {
 	max-width: 100%;
 	margin: 2em;
 }
+
+
+.critique img {
+	float: left;
+	width: 50%;
+  }

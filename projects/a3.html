@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!-- saved from url=(0056)https://vis-society.github.io/assignments/A2_report.html -->
+<html lang="en"><plasmo-csui><template shadowrootmode="open"><div id="plasmo-shadow-container" style="z-index: 2147483647; position: relative;"><div id="plasmo-overlay-0" class="plasmo-csui-container" style="display: flex; position: absolute; top: 0px; left: 256px;"></div></div></template></plasmo-csui><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Vis &amp; Society Assignment 3</title>
+	<link rel="stylesheet" href="./Vis &amp; Society Assignment 2_files/report.css">
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1222.0" data-gr-ext-installed="">
+	<header>
+		<h1>
+			<small>Assignment 3</small>
+			Visualization Critique &amp; Redesign
+		</h1>
+
+		<p>
+			<strong>Jennet Zamanova</strong> — <em>zamanova@mit.edu</em>
+		</p>
+	</header>
+	<main>
+		<section>
+			<h2>Critique</h2>
+			<div class="critique">
+				<img src="../images/a3/covid-spiral.png" alt="">
+
+				<div>
+					<p>
+						<!-- It’s interesting way of making a clock but in months instead of hours.
+						I like the addition of the dashed lines because it makes it easier to find the month
+		
+						The duplicate addition of the arrow helps to confirm that we are going clockwise just like a normal clock
+		
+						7-day average label helps, though I missed it at first because it was close to the date labels for the year. 
+						Also, it’s interesting that they chose that, because this looks like continous data, so what exactly is meant as 7-day average? 
+						7 days from when - is it weekly, is 7 days prior to this day, after this day etc. - for someone who does not work with data it's hard to tell.
+		
+						
+		Instead we see another increase starting mid-December. 
+		Possibly because people just got tired of the disease and stopped following rules — or just the fact the vaccine is out. 
+		I don't remember exact dates for those events, so possibly having labels for when big stuff happened could help make better sense.
+		
+		
+		It's interesting that there is a discussion of omicron but we do not see the different types,
+		 so maybe some additional color for the type of COVID could help see how much more spreading the omicron variant is (but it would be harder to find accurate data)
+		
+		plus showing the fatality, hospitalized, and similar things rate
+		Given the article its interesting that they did not add projected in grey or something like that because they are focusing more on future with mild commentary on the past
+		
+		Interestingly, while I thought that the clock made sense, when I tried actually to write down the dates and my thoughts, 
+		I kept tripping and writing the wrong year. It also takes a second to realize which month we are in in a given sector because 
+		1. not all months are labeled 2. this is not usual way the clock is
+		
+		With clock style its supposed to be helpful to compare same months across different years, but maybe small multiples would be better — 
+		those this way of doing also has a wow factor and a way of make the viewer more interested on what the swirl is about — 
+		which is helpful for header of an article especially for guest writer.
+		
+		Like I said before I was able to find the smallest and very big ones, 
+		though it is slightly hard to tell whether the September 2021 wave was bigger than January 2021. We can still see the two humps though, so that’s good.
+		
+		again 2020 seems like not a pandemic year, but they really made it clear for Jan 2022 that there is going to be a lot of cases which is what
+		 they wanted to show to begin with based on the article -->
+						 The visualization presents a creative approach by structuring time like a clock but using months instead of hours, 
+						which effectively highlights seasonal trends. The dashed lines improve readability by making it easier to identify specific months, 
+						and the additional arrow reinforces the clockwise reading direction. The design also captures major waves of the pandemic well, making 
+						large-scale trends visible at a glance. However, certain details could be refined to enhance clarity. For instance, the 7-day average 
+						label is easily missed due to its placement near the date labels, and it is unclear what timeframe is used for the calculation, 
+						which could be confusing for those less familiar with data interpretation. Additionally, the decision not to include projected 
+						data—despite the article's future-oriented focus—feels like a missed opportunity for more informed takeaways.
+					</p>
+					<p>
+						<!-- From just seeing this plot, I would’ve assumed that the disease came to pandemic level during the winter of 2021: Nov 2020 → March 2021.
+						which would make sense given people get sick then, but does not seem same as what would expect given how pandemic progressed. 
+						We can see another wave starting from August of 2021 and it does not quite die down like the first one did with almost no cases mid-June.
+						I’m not sure how much the area ratio changes based on how much later we are —> november in 2021 is much longer than in 2020. 
+		
+		
+		
+		It also looks like in Jan 2022 we got the most number of cases in the history so far —> is this actually true and is that value 150K since that looks to be the max 
+		— how come — BASED on the data we’ve got that does not seem to be the case at all!?
+		
+		area was used as an encoding —> using length may have been more useful
+		
+		I also wonder how harder it is for younger people to read the graph, because I’ve been seeing on social media people telling 
+		that they cannot read this type of clocks and can only read the digital ones — as someone not from US this phenomena makes no sense because we always learn it at school but 🤷🏻‍♀️ -->
+						While the clock format makes comparing the same months across years intuitive, 
+						it can also be disorienting since not all months are labeled, and this layout is not a conventional way to represent time. 
+						The use of area encoding may make it difficult to compare certain peaks accurately, such as distinguishing whether September 2021’s 
+						wave was larger than January 2021’s. Alternative approaches, such as small multiples or length-based encoding (higher effectiveness), could improve precision 
+						while maintaining engagement. Further, annotations marking key events (e.g., vaccine rollouts, policy changes) would help contextualize trends. 
+						Lastly, given that many younger audiences struggle with analog clocks, this format may not be as universally accessible as intended. 
+						Despite these drawbacks, the visualization remains visually striking and draws viewers in, making it effective as an attention-grabbing piece in an article header
+						- which may have been the main goal anyway since the image does not even have <code>alt</code> text (i.e. maybe we are reading too much into it).
+		
+		
+					</p>
+				</div>
+
+			</div>
+
+		</section>
+
+		<section>
+			<h2>Hand Sketches</h2>
+			<p>All of the sketches are till Jan6, 2022 because thats when the article was posted</p>
+			<figure>
+				<img src="../images/a3/IMG_0569.jpg" alt="">
+				<figcaption>
+					<!-- To make it easier to read the data, we could just use line charts. While I wanted to add collor for number of infections from different strains,
+					we did not have as granular of data. Instead, I added labels on when the strain was confirmed first time in the U.S. for the main strains.
+					This decision was mainly made because we are focusing on the U.S. and WHO does not immediately label variants as VOC (variant of concern).
+
+					I also added another line for the number of deceased people to show that while there are a lot of new cases it may not be an increased burden for hospitals etc.
+					(which was mentioned in the article but not displayed in any way on the visualizations). If data was available, I would also add the number of people hospitalized.
+					The problem I discovered with this is that the line for deceased is very close to 0 due to the scale of number of confirmed cases. So for the next skecth I would 
+					consider log scale.
+
+					Because of the mention inconsistent reporting during holiday weekends I was not sure whether we want to aggregate or not. 
+					From one side we can hide it so we do not get that many fluctuations, from the other we may want to actually show it to the reader to explain how hard 
+					that makes it in making predictions. Since this was a hand-sketch I would not be able to show the noise even if I wanted to, but would be important to consider for 
+					the final sketch.
+
+					I think this skecth is also really good at showing the astronomical increase in new casses in January of 2022 (which I think is what the writers wanted to do anyway).
+					This type of skecth would also make it easier for them to add more predictions for January to show an even bigger increase upcoming.
+
+					I also added dates for the peaks of the waves to give an orientation of where in time we are. As well as, added slight coloring based on season - BUT this probably
+					was a bad idea since this would work only in the Northern hemisphere. -->
+					<br>
+					<b>Motivation & Communication:  </b>
+					<br>
+					This sketch aims to improve readability while emphasizing key events and trends. While I would have preferred to color-code infections by strain, there wasn’t enough accurate data to do so. Instead, I labeled when major variants were first detected in the U.S. A second line for deceased cases was added to highlight hospital burden, aligning with the article’s discussion.  
+					<br>
+					<b>What Worked Well:</b>  
+					<br>
+					The line chart clearly shows overall trends, and labeling key dates helps orient the viewer. The dramatic January 2022 surge is effectively communicated, reinforcing the article’s message. This format also allows for easy extensions, such as future projections.  
+					<br>
+					<b>What Didn’t Work:</b> 
+					<br>
+					The deceased cases line is difficult to see due to the scale of confirmed cases. Seasonal coloring was tested but may not be ideal due to Northern Hemisphere bias. Inconsistent holiday reporting also raises questions about whether to smooth or highlight fluctuations (highlighting can be useful in showing how hard it is to make predictions but make it harder to read). 
+					<br>
+					<b>Next Steps:</b>  
+					<br>
+					Explore using a log scale to balance visibility of both data series. Consider alternative ways to segment time without relying on seasons. Determine whether to aggregate or display fluctuations from inconsistent holiday reporting.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="../images/a3/IMG_0571.jpg" alt="">
+				<figcaption> <br>
+					<!-- We could try same small multiples like that used for climate changes to show the variation per month rather than clock - and have the January centered 
+					to showcase the wave better. However, in class a lot of people were confused on the transition from one month to another so it may end up being more 
+					confusing than helpful.
+
+					With small multiples its also hard to add labels for some of the events. Its also hard to see all the waves since the main ones are in Jan and Sep. 
+
+					Based on the previous sketch I used log scale this time. 
+					 I think displaying average per month helps to show how considtently high the number are for December and January.
+					 But because we are using log-scale January, 2022 is not as dramatic as in normal scale.
+
+					 Because we need to add 2022 for January but cannot for the rest it may be confusing/viewer may not notice which years are being displayed.
+					 We can see the trend of more cases does not always mean more deaths, but because we are unable to label strains as clearly the message is somewhat lost in translation -->
+					 <b>Motivation & Communication:  </b> <br>
+					 This sketch explores small multiples to display monthly variations, inspired by climate change visualizations (mentioned in class). 
+					 The goal was to highlight the recurring winter surges, particularly January, which consistently shows high case numbers. 
+					 Using a log scale improves visibility of both case and death trends while maintaining proportionality (based on previous sketch).  <br>
+					 
+					 <b>What Worked Well:</b>  <br>
+					 The log scale allows for better comparison across months, and averaging per month effectively emphasizes seasonal patterns. 
+					 The visualization also reinforces the point that more cases do not always lead to more deaths.  <br>
+					 
+					 <b>What Didn’t Work:</b> <br>
+					 The transition between months may be confusing, as observed in class (when analyzing climate graph people were very confused on the transitions). 
+					 Small multiples make it difficult to label variant detection events, 
+					 and key waves in January and September are not as clearly distinguishable. Additionally, displaying January 2022 while other months 
+					 lack 2022 data might confuse viewers. The dramatic January 2022 surge is also less striking due to the log scale.  <br>
+					 
+					 <b>Next Steps:</b> <br>
+					 Consider alternative layouts to better communicate trends without causing confusion, possibly by re-centering January in a different way. 
+					 Explore how to incorporate strain information more effectively without cluttering the visualization. 
+					 Evaluate whether a linear scale might be more appropriate despite its drawbacks.
+				</figcaption>
+			</figure>
+
+			<figure>
+				<img src="../images/a3/IMG_0572.jpg" alt="" height="400px">
+				<img src="../images/a3/IMG_0573.jpg" alt="" height="400px">
+				<figcaption> <br>
+					<b>Motivation & Communication:  </b> <br> 
+					This sketch overlays different years on the same timeline to compare monthly trends. The goal was to identify peaks across years and assess overall increases. 
+					Switching back to a linear scale helps highlight drastic differences, especially between Januarys.  <br>
+					
+					<b>What Worked Well:</b>  <br>
+					The overlay approach effectively shows year-to-year trends and seasonal patterns. The linear scale makes the January 2022 spike more pronounced compared 
+					to previous years.  <br>
+					
+					<b>What Didn’t Work:</b> <br>
+					The visualization lacks impact since only January 2022 is shown, making it just a dot. The transition from December to January needed careful handling. 
+					Without prediction data, the full dramatic effect is missing. Additionally, the starting point may not be intuitive for viewers, and hospitalizations/deaths 
+					are not included.  <br>
+					
+					<b>Next Steps:</b> <br>
+					Consider ways to enhance clarity, such as annotations or better transitions between years. 
+					Explore integrating hospitalization and death data to provide more context. Adding projections could make the trends more striking. <br>
+				</figcaption>
+			</figure>
+
+			
+		</section>
+
+		<section>
+			<h2>Final Sketch</h2>
+
+			<figure>
+				<img src="../images/a3/final.png" alt="" width="90%" height="500px">
+				<figcaption>
+					<p>
+
+						<!-- In this final sketch, I am trying to highlight January 2022 as the month with the biggest number of new cases. 
+						I focus on monthly averages to ignore noise and highlight January as a whole rather than days.
+
+
+						While positional and length encodings were considered, bar chart retained effectiveness while also providing the wow factor.
+						I used a "stepped" color scheme to more easily tell the difference between the amount (added redundancy gain since technically teh length of the graph also displays value).
+						Moreover, because January value is so much bigger than the rest of the values, I truncated the upper end for the color scale at 210 k to more easiler differentiate the values 
+						that are below (if I did not, most of the graph would have been blue).
+						I also filtered out data that is less than 0 because it does not make sense to have negative number of new confirmed cases. In addition to that, I removed the data after January 6th
+						because the article was posted on that date and therefore was not available to the writers.
+
+						Just like in the first sketch I made additions of labeled variants and vaccine releases to put the waves into perspective.
+						This time around I had COVID variants in violet boxes while vaccines in green boxes to differentiate between the two and not confuse with the coloring given to teh barchart
+						though other ways of differentiating could be considered because it's starting to look a bit cluttered somewhat hiding the first January and September waves.
+
+						In addition to that reference lines at 100k and 200k were added to highlight the average amounts we've been seeing so far compared to ~636k in January.
+						Due to the discussions in the previos sketches I did not add log scale and/or number of deceased of people. -->
+						
+						In this final visualization, I aimed to highlight January 2022 as the month with the highest number of new COVID-19 cases, 
+						demonstrating how the Omicron variant led to an unprecedented spike. By using monthly averages, I removed daily fluctuations and 
+						focused on larger trends. Additionally, I incorporated annotations for key variant emergences and vaccine releases to contextualize 
+						the major waves of infections. This design choice helps illustrate the relationship between case surges and medical interventions while 
+						allowing viewers to quickly identify the most significant periods of the pandemic.
+
+						<br>
+
+						To achieve this, I used a bar chart with both length (height - best at expressiveness after position) and color encoding to represent case counts.
+						The stepped color scheme enhances differentiation between values, reinforcing the trends already depicted by bar heights. 
+						Because the January 2022 spike dwarfs previous values, I capped the color scale at 210K to prevent most of the chart from appearing in a single shade. 
+						
+						<br>
+						
+						Reference lines at 100K and 200K provide additional context for scale. I also maintained a clear distinction between variant-related 
+						(purple boxes) and vaccine-related (green boxes) annotations, although further refinement could help reduce clutter, particularly around earlier waves. 
+						Some trade-offs were necessary; for example, I did not include a log scale or death counts based on earlier discussions. 
+						Lastly, I filtered out negative values (which are nonsensical for new cases) and excluded data after January 6th to align with the article’s publication date.
+						(dates were used with abbreviation to show all months without making it vertical).
+					</p>
+				</figcaption>
+			</figure>
+			
+		</section>
+
+		<section>
+			<h2>Reflection</h2>
+			The critique phase helped me identify key issues with the clock-based format, particularly its unconventional time structure,
+			 which, while creative, made direct comparisons between months difficult. By switching to a standard time-based bar chart, 
+			 I ensured better readability and clearer peak comparisons. Additionally, the critique highlighted the need for contextual annotations, 
+			 which I incorporated to provide insight into major variant emergences and vaccine rollouts.
+			 While these additions improved clarity, they also introduced slight clutter in earlier waves, a trade-off I attempted to mitigate with distinct 
+			 color-coded labels. Additionally, in the critique I pointed out the absence of projected data, 
+			 but given that we do not have access to the projected data, I chose to maintain the focus on observed cases.
+			  This iterative process reinforced the challenge of balancing clarity, engagement, and comprehensiveness in data visualization.
+			<p>
+			</p>
+		</section>
+	</main>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
